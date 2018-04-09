@@ -1,0 +1,27 @@
+<div class="row">
+  <div class="col-xs-12">
+    <button type="button" class="btn btn-warning btn-block">New Dish</button>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12">
+    <a href="#" class="list-group-item clearfix tastebud-header" 
+    *ngFor="let dish of dishes">
+      <div class="pull-left">
+        <h4 class="list-group-item-heading">{{ dish.name }}</h4>
+        <p class="list-group-item-text"> {{ dish.description }}</p>
+      </div>
+      <span class="pull-right">
+        <!-- 
+        alternative for src - [src]="dish.recipePath" (property binding))
+        -->
+        <img 
+        src="{{ dish.imagePath }}" 
+        alt="{{ dish.name }}" 
+        class="img-responsive" 
+        style="max-height: 50px;">
+      </span>
+    </a>
+    <app-dishes-item></app-dishes-item>
+  </div>
+</div>
