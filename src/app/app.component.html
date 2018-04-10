@@ -1,9 +1,11 @@
-<app-header></app-header>
+<!-- $event protected name to get access of any data passed to component -->
+
+<app-header (elementSelected)="onNavigate($event)"></app-header>
 <div class="container">
   <div class="row">
     <div class="col-md-12">
-      <app-dishes></app-dishes>
-      <app-shopping-list></app-shopping-list>
+      <app-dishes *ngIf="loadedElement === 'dish'"></app-dishes>
+      <app-shopping-list *ngIf="loadedElement !== 'dish'"></app-shopping-list>
     </div>
   </div>
 </div>

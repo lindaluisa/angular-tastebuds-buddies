@@ -5,6 +5,12 @@ import { Component } from '@angular/core';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
+
+// dish as the passed argument in the header html
 export class AppComponent {
-  title = 'app';
+  loadedElement = 'dish';
+
+  onNavigate(element: string) {
+    this.loadedElement = element;
+  }
 }
