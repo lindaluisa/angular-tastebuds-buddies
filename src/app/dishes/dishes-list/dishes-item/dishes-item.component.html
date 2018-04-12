@@ -1,3 +1,15 @@
-<p>
-  dishes-item works!
-</p>
+<a 
+  href="#" 
+  class="list-group-item clearfix peach">
+  <div class="pull-left">
+    <h4 class="list-group-item-heading">{{ dish.name }}</h4>
+    <p class="list-group-item-text"> {{ dish.description }}</p>
+  </div>
+  <span class="pull-right">
+    <img 
+    [src]="dish.imagePath" 
+    alt="{{ dish.name }}" 
+    class="img-responsive" 
+    style="max-height: 50px;">
+  </span>
+</a>
