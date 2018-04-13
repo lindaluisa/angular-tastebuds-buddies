@@ -8,7 +8,7 @@ import { Dish } from '../dishes.model'
 })
 
 export class DishesDetailComponent implements OnInit {
-  @Input() dish: Dish;
+  @Input() dishDetail: Dish;
   constructor() { }
 
   ngOnInit() {

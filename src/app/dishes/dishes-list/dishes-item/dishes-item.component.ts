@@ -12,7 +12,7 @@ import { Dish } from '../../dishes.model'; // type Dish
 // again: @Output, to listen to event from outside
 export class DishesItemComponent  implements OnInit {
   @Input() dish: Dish;
-  @Output() dishSelected = new EventEmitter<void>();
+  @Output() dishClicked = new EventEmitter<void>();
 
   constructor() { }
 
@@ -20,7 +20,7 @@ export class DishesItemComponent  implements OnInit {
   }
 
   onSelected() {
-    this.dishSelected.emit();
+    this.dishClicked.emit();
   }
 
 }

@@ -12,6 +12,6 @@
     <app-dishes-item
     *ngFor="let dishElement of dishes"
     [dish]="dishElement"
-    (dishSelected)="onDishSelected(dishElement)"></app-dishes-item>
+    (dishClicked)="onDishClicked(dishElement)"></app-dishes-item>
   </div>
 </div>

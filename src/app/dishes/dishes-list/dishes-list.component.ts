@@ -14,7 +14,7 @@ import { Dish } from '../dishes.model';
 // new Dish like a method; defining expected 
 // calling the constructor; we need to pass the arguments we are expecting in the constructor
 export class DishesListComponent implements OnInit {
-@Output() dishWasSelected = new EventEmitter<Dish>();
+@Output() dishWasClicked = new EventEmitter<Dish>();
 dishes: Dish[] = [
    new Dish('Rice Rolls with Satay Sauce', 'Super yummy summer dish', 'http://laurencariscooks.com/1_lcc/wp-content/uploads/2017/05/Vegan-Tofu-Summer-Rolls-with-Two-kinds-of-dipping-sauce-1-2-600x600.jpg'),
    new Dish('Yellow Rice Curry with Tempeh', 'Pachamama protein bomb', 'https://nourisheveryday.com/wp-content/uploads/2017/11/Easy-Vegan-Yellow-Curry-Tempeh-2-500x500.jpg'),
@@ -25,7 +25,7 @@ dishes: Dish[] = [
   ngOnInit() {
   }
 
-  onDishSelected(el: Dish) {
-    this.dishWasSelected.emit(el);
+  onDishClicked(el: Dish) {
+    this.dishWasClicked.emit(el);
   }
 }
