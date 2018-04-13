@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { Dish } from '../../dishes.model'; // type Dish
 
 @Component({
@@ -8,11 +8,19 @@ import { Dish } from '../../dishes.model'; // type Dish
 })
 
 // Dish not defined; bc dish should come from outside
+// <void> since it does not pass any information
+// again: @Output, to listen to event from outside
 export class DishesItemComponent  implements OnInit {
   @Input() dish: Dish;
+  @Output() dishSelected = new EventEmitter<void>();
+
   constructor() { }
 
   ngOnInit() {
+  }
+
+  onSelected() {
+    this.dishSelected.emit();
   }
 
 }

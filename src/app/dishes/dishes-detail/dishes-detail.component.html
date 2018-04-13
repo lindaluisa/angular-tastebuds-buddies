@@ -1,11 +1,16 @@
+<!-- alt string interpolation, in case an image doesnt load -->
 <div class="row">
   <div class="col-xs-12">
-    <img src="" alt="" class="img-responsive">
+    <img 
+    [src]="dish.imagePath" 
+    alt="{{ dish.name }}" 
+    class="img-responsive"
+    style="max-height: 300px">
   </div>
 </div>
 <div class="row">
   <div class="col-xs-12">
-    <h1>Dish Name</h1>
+    <h1> {{ dish.name }}</h1>
   </div>
 </div>
 <div class="row">
@@ -26,7 +31,7 @@
 </div>
 <div class="row">
   <div class="col-xs-12">
-    Description
+    {{ dish.description }}
   </div>
 </div>
 <div class="row">

@@ -7,8 +7,11 @@
 <div class="row">
   <div class="col-xs-12">
     <!-- [dish] refers to dish-item component; property binding  -->
+    <!-- passing data (dishes in dishes-list component) down to dish-item component -->
+    <!-- event binding: adding dishEl as argument to clarify which dish -->
     <app-dishes-item
     *ngFor="let dishElement of dishes"
-    [dish]="dishElement"></app-dishes-item>
+    [dish]="dishElement"
+    (dishSelected)="onDishSelected(dishElement)"></app-dishes-item>
   </div>
 </div>
