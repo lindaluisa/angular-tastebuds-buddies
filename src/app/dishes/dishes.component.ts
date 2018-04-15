@@ -12,9 +12,19 @@ import { DishService } from './dish.service';
 export class DishesComponent implements OnInit {
 selectedDish: Dish; 
 
-  constructor() { }
+// injecting service
+  constructor(private dishService: DishService) { }
 
+  // listening to event in dishService & receiving data thereby
+  // dishSelected (eventEmitter) is within the service
+  // .subscribe is from rxjs which Ang uses behind the scenes--> informing about any changes
+  // the selectedDish equal to the dish of the event
   ngOnInit() {
+    this.dishService.dishSelected
+      .subscribe((dish: Dish) => {
+          this.selectedDish = dish;
+        }
+      )
   }
 
 }

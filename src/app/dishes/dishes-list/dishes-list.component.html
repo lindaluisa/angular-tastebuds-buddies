@@ -11,7 +11,7 @@
     <!-- event binding: adding dishEl as argument to clarify which dish -->
     <app-dishes-item
     *ngFor="let dishElement of dishes"
-    [dish]="dishElement"
-    (dishClicked)="onDishClicked(dishElement)"></app-dishes-item>
+    [dish]="dishElement"></app-dishes-item>
+    <!-- old way: (dishClicked)="onDishClicked(dishElement)" -->
   </div>
 </div>

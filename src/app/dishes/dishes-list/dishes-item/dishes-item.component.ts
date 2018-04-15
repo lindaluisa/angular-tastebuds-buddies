@@ -1,5 +1,7 @@
-import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+
 import { Dish } from '../../dishes.model'; // type Dish
+import { DishService } from '../../dish.service';
 
 @Component({
   selector: 'app-dishes-item',
@@ -7,20 +9,27 @@ import { Dish } from '../../dishes.model'; // type Dish
   styleUrls: ['./dishes-item.component.css']
 })
 
+// old way: 
 // Dish not defined; bc dish should come from outside
 // <void> since it does not pass any information
-// again: @Output, to listen to event from outside
+// @Output() dishClicked = new EventEmitter<void>(); - again: @Output, to listen to event from outside
 export class DishesItemComponent  implements OnInit {
   @Input() dish: Dish;
-  @Output() dishClicked = new EventEmitter<void>();
 
-  constructor() { }
+  constructor(private dishService: DishService) { }
 
   ngOnInit() {
   }
 
+  // onSelected() {
+  //   this.dishClicked.emit();
+  // }
+
+  // dishService defined in constructor
+  // dishSelected = EventEmitter in service
+  // and emit the dish of this dish item component; that's the data we want to pass
   onSelected() {
-    this.dishClicked.emit();
+    this.dishService.dishSelected.emit(this.dish);
   }
 
 }

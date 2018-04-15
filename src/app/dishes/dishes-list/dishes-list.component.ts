@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Dish } from '../dishes.model';
 import { DishService } from '../dish.service';
 
@@ -21,18 +21,19 @@ import { DishService } from '../dish.service';
 // old way of doing it, now working with DishService
 
 export class DishesListComponent implements OnInit {
-@Output() dishWasClicked = new EventEmitter<Dish>();
+// @Output() dishWasClicked = new EventEmitter<Dish>();  old way
 dishes: Dish[];
 
   constructor(private dishService: DishService) {
 
   }
 
-  ngOnInit() {
+  ngOnInit() { 
     this.dishes = this.dishService.getDishes();
   }
 
-  onDishClicked(el: Dish) {
-    this.dishWasClicked.emit(el);
-  }
+  // old way
+  // onDishClicked(el: Dish) {
+  //   this.dishWasClicked.emit(el);
+  // }
 }

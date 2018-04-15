@@ -2,8 +2,7 @@
   but since logic is little, it's enough to put it in the template  -->
 <div class="row">
   <div class="col-md-5">
-    <app-dishes-list
-    (dishWasClicked)="selectedDish = $event"></app-dishes-list>
+    <app-dishes-list></app-dishes-list> <!-- old way:(dishWasClicked)="selectedDish = $event" -->
   </div>
   <div class="col-md-7">
 <!-- ngIf bc only display when dish is selected -->
