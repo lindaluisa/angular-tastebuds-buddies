@@ -1,5 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
+
 import { Dish } from '../dishes.model'
+import { DishService } from '../dish.service';
 
 @Component({
   selector: 'app-dishes-detail',
@@ -9,9 +11,13 @@ import { Dish } from '../dishes.model'
 
 export class DishesDetailComponent implements OnInit {
   @Input() dishDetail: Dish;
-  constructor() { }
+  constructor(private dishService: DishService) { }
 
   ngOnInit() {
+  }
+
+  onAddToShoppingList() {
+    this.dishService.addIngredsToShoppingList(this.dishDetail.ingreds);
   }
 
 }
