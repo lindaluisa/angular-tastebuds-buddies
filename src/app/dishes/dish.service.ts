@@ -12,9 +12,7 @@ export class DishService {
       'Super yummy summer dish',
       'http://laurencariscooks.com/1_lcc/wp-content/uploads/2017/05/Vegan-Tofu-Summer-Rolls-with-Two-kinds-of-dipping-sauce-1-2-600x600.jpg',
       [
-        new Ingredient('Peanut butter', 2),
-        new Ingredient('Cocos Cream', 1),
-        new Ingredient('Soy Sauce', 1),
+        new Ingredient('Rice Paper',10),
         new Ingredient('Vermicelli Noodles',2),
         new Ingredient('Cilantro',1)
       ]),
@@ -27,7 +25,7 @@ export class DishService {
         new Ingredient('Tempeh',3)
       ]),
     new Dish(
-      'Calçots with Romesco sauce',
+      'Calçots with Romesco Sauce',
       'Catalan gastronomic masterpiece',
       'http://boroughmarket.org.uk/images/2570/default/bmml31_jennychandler0041.jpg',
       [

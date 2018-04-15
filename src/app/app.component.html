@@ -4,8 +4,10 @@
 <div class="container">
   <div class="row">
     <div class="col-md-12">
-      <app-dishes *ngIf="loadedElement === 'dish'"></app-dishes>
-      <app-shopping-list *ngIf="loadedElement !== 'dish'"></app-shopping-list>
+      <router-outlet></router-outlet>
+      <!-- old way -->
+      <!-- <app-dishes *ngIf="loadedElement === 'dish'"></app-dishes>
+      <app-shopping-list *ngIf="loadedElement !== 'dish'"></app-shopping-list> -->
     </div>
   </div>
 </div>
