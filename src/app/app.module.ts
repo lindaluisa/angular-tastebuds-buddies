@@ -14,6 +14,7 @@ import { DropdownDirective } from './shared/dropdown.directive';
 import { ShoppingListService } from './shopping-list/shopping-list.service';
 import { AppRoutingModule } from './app-routing.module';
 import { DishStartComponent } from './dishes/dish-start/dish-start.component';
+import { DishesEditComponent } from './dishes/dishes-edit/dishes-edit.component';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { DishStartComponent } from './dishes/dish-start/dish-start.component';
     HeaderComponent,
     DishesItemComponent, 
     DropdownDirective, 
-    DishStartComponent
+    DishStartComponent, 
+    DishesEditComponent
   ],
   imports: [
     BrowserModule,
