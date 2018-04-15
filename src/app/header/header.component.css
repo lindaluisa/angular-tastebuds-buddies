@@ -1,7 +1,12 @@
+
 .tastebud-logo {
   height: 10vh;
 }
 
-.navbar-default {
+.nav a {
+  background: transparent;
+}
+
+.navbar-default, :active {
   background: #e26b904a;
 }

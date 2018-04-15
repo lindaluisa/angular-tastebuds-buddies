@@ -5,8 +5,9 @@
     </div>
   <div class="navbar-default">
     <ul class="nav navbar-nav">
-      <li><a href="#" (click)="onSelect('dish')">Dishes</a></li>
-      <li><a href="#" (click)="onSelect('shopping-list')">Shopping List</a></li>
+      <!-- click events substituted by routes, see personal notes -->
+      <li routerLinkActive="active"><a routerLink="/dishes">Dishes</a></li>
+      <li routerLinkActive="active"><a routerLink="/shopping-list">Shopping List</a></li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
       <li class="dropdown"
