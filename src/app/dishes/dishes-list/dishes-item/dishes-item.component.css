@@ -1,3 +1,24 @@
-.peach {
+a,
+.clearfix:active,
+a:hover {
   background: #e26b904a;
+}
+
+a:hover {
+  background-color: #ee9f33;
+}
+
+.clearfix.list-group-item.active {
+  background: #ee9f33;
+  border-color: #e38d13;
+  text-shadow: none;
+}
+
+.list-group-item.active 
+.list-group-item-text, 
+.list-group-item.active:focus 
+.list-group-item-text, 
+.list-group-item.active:hover 
+.list-group-item-text {
+  color: white;
 }
