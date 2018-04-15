@@ -5,15 +5,19 @@
     <app-dishes-list></app-dishes-list> <!-- old way:(dishWasClicked)="selectedDish = $event" -->
   </div>
   <div class="col-md-7">
+    <router-outlet></router-outlet>
+</div>
+</div>
+
+
+<!-- old way -->
 <!-- ngIf bc only display when dish is selected -->
 <!-- ng-template receives a local reference (#) -->
 <!-- facilitates ngIf - else syntax -->
-  <app-dishes-detail
-  *ngIf="selectedDish; else infoText"
-  [dishDetail]="selectedDish"
-  ></app-dishes-detail>
-  <ng-template #infoText>
-    <p>Click on your fav dish to see details!</p>
-  </ng-template>
-  </div>
-</div>
+<!-- <app-dishes-detail
+*ngIf="selectedDish; else infoText"
+[dishDetail]="selectedDish"
+></app-dishes-detail>  
+<ng-template #infoText>
+  <p>Click on your fav dish to see details!</p>
+</ng-template> -->

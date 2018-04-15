@@ -1,7 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 
 import { Dish } from '../../dishes.model'; // type Dish
-import { DishService } from '../../dish.service';
 
 @Component({
   selector: 'app-dishes-item',
@@ -16,7 +15,6 @@ import { DishService } from '../../dish.service';
 export class DishesItemComponent  implements OnInit {
   @Input() dish: Dish;
 
-  constructor(private dishService: DishService) { }
 
   ngOnInit() {
   }
@@ -28,8 +26,8 @@ export class DishesItemComponent  implements OnInit {
   // dishService defined in constructor
   // dishSelected = EventEmitter in service
   // and emit the dish of this dish item component; that's the data we want to pass
-  onSelected() {
-    this.dishService.dishSelected.emit(this.dish);
-  }
+  // onSelected() {
+  //   this.dishService.dishSelected.emit(this.dish);
+  // }
 
 }

@@ -1,4 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Params } from '@angular/router';
 
 import { Dish } from '../dishes.model'
 import { DishService } from '../dish.service';
@@ -10,10 +11,22 @@ import { DishService } from '../dish.service';
 })
 
 export class DishesDetailComponent implements OnInit {
-  @Input() dishDetail: Dish;
-  constructor(private dishService: DishService) { }
+  dishDetail: Dish;
+  id: number;
 
+  constructor(private dishService: DishService,
+              private route: ActivatedRoute) { }
+
+  // params observable
+  // since we get a string back, we have to cast it to a num by adding a + sign 
   ngOnInit() {
+    this.route.params
+    .subscribe(
+      (params: Params) => {
+        this.id = +params['id'];
+        this.dishDetail = this.dishService.getDish(this.id);
+      }
+    )
   }
 
   onAddToShoppingList() {

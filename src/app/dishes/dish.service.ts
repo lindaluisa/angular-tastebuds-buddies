@@ -44,6 +44,10 @@ export class DishService {
      return this.dishes.slice();
    }
 
+   getDish(index: number) {
+    return this.dishes[index];
+   }
+
    addIngredsToShoppingList(ingreds: Ingredient[]) {
     this.shoppingListService.addIngreds(ingreds);
    }
