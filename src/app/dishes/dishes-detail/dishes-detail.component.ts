@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 
 import { Dish } from '../dishes.model'
 import { DishService } from '../dish.service';
@@ -15,7 +15,8 @@ export class DishesDetailComponent implements OnInit {
   id: number;
 
   constructor(private dishService: DishService,
-              private route: ActivatedRoute) { }
+              private route: ActivatedRoute,
+              private router: Router) { }
 
   // params observable
   // since we get a string back, we have to cast it to a num by adding a + sign 
@@ -33,4 +34,8 @@ export class DishesDetailComponent implements OnInit {
     this.dishService.addIngredsToShoppingList(this.dishDetail.ingreds);
   }
 
+  onEditDish() {
+    this.router.navigate(['edit'], {relativeTo: this.route});
+    // alternative: this.router.navigate(['../', this.id, 'edit', {relativeTo: this.route}]);
+  }
 }

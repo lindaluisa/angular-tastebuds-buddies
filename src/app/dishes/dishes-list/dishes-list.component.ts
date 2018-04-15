@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
+
 import { Dish } from '../dishes.model';
 import { DishService } from '../dish.service';
 
@@ -24,13 +26,20 @@ export class DishesListComponent implements OnInit {
 // @Output() dishWasClicked = new EventEmitter<Dish>();  old way
 dishes: Dish[];
 
-  constructor(private dishService: DishService) {
+  constructor(private dishService: DishService,
+              private router: Router,
+              private route: ActivatedRoute) {
 
   }
 
   ngOnInit() { 
     this.dishes = this.dishService.getDishes();
   }
+
+  onNewDish() {
+    this.router.navigate(['new'], {relativeTo: this.route});
+  }
+
 
   // old way
   // onDishClicked(el: Dish) {
