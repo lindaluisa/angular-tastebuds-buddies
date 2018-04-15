@@ -14,7 +14,7 @@ import { Dish } from '../../dishes.model'; // type Dish
 // @Output() dishClicked = new EventEmitter<void>(); - again: @Output, to listen to event from outside
 export class DishesItemComponent  implements OnInit {
   @Input() dish: Dish;
-
+  @Input() index: number;
 
   ngOnInit() {
   }

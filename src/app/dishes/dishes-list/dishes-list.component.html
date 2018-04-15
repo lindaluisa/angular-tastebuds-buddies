@@ -10,8 +10,9 @@
     <!-- passing data (dishes in dishes-list component) down to dish-item component -->
     <!-- event binding: adding dishEl as argument to clarify which dish -->
     <app-dishes-item
-    *ngFor="let dishElement of dishes"
-    [dish]="dishElement"></app-dishes-item>
+    *ngFor="let dishElement of dishes; let i = index"
+    [dish]="dishElement"
+    [index]="i"></app-dishes-item>
     <!-- old way: (dishClicked)="onDishClicked(dishElement)" -->
   </div>
 </div>

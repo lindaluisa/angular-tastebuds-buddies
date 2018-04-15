@@ -1,5 +1,7 @@
+<!-- due to dynamic segment in path, [''] binding required -->
 <a 
-  style="cursor: pointer"
+  style="cursor: pointer;"
+  [routerLink]="[index]"
   class="list-group-item clearfix peach">
   <!--  old way: (click)="onSelected()"> -->
   <div class="pull-left">
