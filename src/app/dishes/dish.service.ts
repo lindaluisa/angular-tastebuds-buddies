@@ -40,6 +40,7 @@ export class DishService {
 // return a new array; exact copy of the exact service file 
 // we cannot access the dishes array stored from outside, we only get a copy
 // way to get dishes
+
    getDishes() {
      return this.dishes.slice();
    }

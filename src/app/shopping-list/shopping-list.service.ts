@@ -19,14 +19,10 @@ export class ShoppingListService {
     this.ingredsChanged.emit(this.ingredients.slice())
   }
 
-  // one option
-  addIngreds(ingredients: Ingredient[]) {
-  //   for (let ingredient of ingredients) {
-  //     this.addIngredient(ingredient);
-  //   }
-
+ 
   // spread operator (ES6 feature) 
   // allows to turn array of elements into a list of elements
+  addIngreds(ingredients: Ingredient[]) {
     this.ingredients.push (...ingredients);
     this.ingredsChanged.emit(this.ingredients.slice());
   }

@@ -21,10 +21,4 @@ export class ShoppingListComponent implements OnInit {
       }
     )
   }
-
-  // again: TS syntax; argument plus type of argument
-  // onIngredientAdded(ingredient: Ingredient) {
-  //   return this.ingredients.push(ingredient); 
-  // }
-
 }

@@ -8,11 +8,6 @@ import { ShoppingListService } from '../shopping-list.service';
   styleUrls: ['./shopping-edit.component.css']
 })
 // adding properties nameInput & amountInput
-// adding Object to EventEmitter; TS definition with 2 properties; not a value
-// ingredientAdded = new EventEmitter<{name:string, amount: number}>();
-// better alternative: using Ingredient Model; has ti be imported
-// @Output() ingredientAdded = new EventEmitter<Ingredient>();
-
 export class ShoppingEditComponent implements OnInit {
   @ViewChild('nameInput') nameInputRef: ElementRef;
   @ViewChild('amountInput') amountInputRef: ElementRef;
@@ -29,6 +24,5 @@ export class ShoppingEditComponent implements OnInit {
     const ingAmount = this.amountInputRef.nativeElement.value;
     const newIngredient = new Ingredient(ingName, ingAmount);
     this.shoppingListService.addIngredient(newIngredient);
-    // old way: this.ingredientAdded.emit(newIngredient);
   }
 }
