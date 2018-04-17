@@ -10,3 +10,11 @@
 .navbar-default, :active {
   background: #e26b904a;
 }
+
+
+.navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:focus, .navbar-default .navbar-nav>.active>a:hover {
+  color: #555;
+  background-color: #e26b904a;
+  padding-bottom: 32px;
+  border-radius: 5px;
+}

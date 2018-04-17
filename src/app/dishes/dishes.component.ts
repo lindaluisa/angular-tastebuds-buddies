@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Dish } from './dishes.model';
 import { DishService } from './dish.service';
 
 @Component({
@@ -10,21 +9,12 @@ import { DishService } from './dish.service';
   providers: [DishService]
 })
 export class DishesComponent implements OnInit {
-selectedDish: Dish; 
 
 // injecting service
-  constructor(private dishService: DishService) { }
+  constructor() { }
 
-  // listening to event in dishService & receiving data thereby
-  // dishSelected (eventEmitter) is within the service
-  // .subscribe is from rxjs which Ang uses behind the scenes--> informing about any changes
-  // the selectedDish equal to the dish of the event
   ngOnInit() {
-    this.dishService.dishSelected
-      .subscribe((dish: Dish) => {
-          this.selectedDish = dish;
-        }
-      )
+
   }
 
 }

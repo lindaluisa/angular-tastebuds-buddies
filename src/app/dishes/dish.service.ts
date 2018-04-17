@@ -1,11 +1,11 @@
-import { EventEmitter, Injectable } from '@angular/core';
+import { Injectable } from '@angular/core';
+
 import { Dish } from './dishes.model';
 import { Ingredient } from '../shared/ingredient.model';
 import { ShoppingListService } from '../shopping-list/shopping-list.service';
 
 @Injectable()
 export class DishService {
-  dishSelected = new EventEmitter<Dish>();
   private dishes: Dish[] = [
     new Dish(
       'Rice Rolls with Satay Sauce', 
@@ -44,7 +44,7 @@ export class DishService {
    getDishes() {
      return this.dishes.slice();
    }
-
+// alternative id: number
    getDish(index: number) {
     return this.dishes[index];
    }
