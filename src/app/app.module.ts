@@ -1,5 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpModule} from '@angular/http';
+import { FormsModule } from '@angular/forms';
 
 
 import { AppComponent } from './app.component';
@@ -33,6 +35,8 @@ import { DishesEditComponent } from './dishes/dishes-edit/dishes-edit.component'
   ],
   imports: [
     BrowserModule,
+    HttpModule,
+    FormsModule,
     AppRoutingModule
   ],
   providers: [ShoppingListService],
