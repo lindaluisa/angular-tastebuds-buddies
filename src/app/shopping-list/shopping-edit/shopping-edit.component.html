@@ -3,7 +3,7 @@
 <!-- once button clicked, using values of input to create new ingredient-->
 <div class="row">
   <div class="col-xs-12">
-   <form (ngSubmit)="onAddItem()" #form="ngForm">
+   <form (ngSubmit)="onAddItem(f)" #f="ngForm">
      <div class="row">
        <div class="col-sm-4 form-group">
          <label for="name">Name</label>
@@ -12,7 +12,8 @@
          id="name" 
          class="form-control"
          name="iname"
-         ngModel>
+         ngModel
+         required>
        </div>
        <div class="col-sm-2 form-group">
          <label for="amount">Amount</label>
@@ -21,14 +22,17 @@
          id="amount" 
          class="form-control"
          name="iamount"
-         ngModel>
+         ngModel
+         required
+         [pattern]="'^[1-9]+[0-9]*$'">
+         <!-- shortcut: pattern=^[1-9]+[0-9]*$  -->
        </div>
      </div>
      <div class="row">
        <div class="col-xs-12">
 <!-- bc of using @ViewChild, not necessary to pass arguments -->
 <!-- debug: preventing page reload; changing type='submit' to button  -->
-         <button class="btn btn-warning" type="button">Add</button>
+         <button class="btn btn-warning" type="submit" [disabled]="!f.valid">{{editMode ? 'Update' : 'Add'}}</button>
          <button class="btn btn-danger" type="button">Delete</button>
          <button class="btn btn-warning" type="button">Clear</button>
        </div>
