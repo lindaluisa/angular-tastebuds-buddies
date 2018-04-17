@@ -45,13 +45,15 @@ export class ShoppingEditComponent implements OnInit, OnDestroy {
 // aim: passing data to parent component, shopping-list c
 // const bc vars won't change
 // ingredient name = iname (see HTML file)
-  onAddItem(form: NgForm) {
-    const value = form.value;
+  onSubmit(f: NgForm) {
+    const value = f.value;
     const newIngredient = new Ingredient(value.iname, value.iamount);
     if (this.editMode) {
       this.shoppingListService.updateIngredient(this.editedItemIndex, newIngredient);
     } else {
       this.shoppingListService.addIngredient(newIngredient);
     }
+    this.editMode = false;
+    f.reset
   }
 }
