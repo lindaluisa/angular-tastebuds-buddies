@@ -38,10 +38,6 @@ export class ShoppingEditComponent implements OnInit, OnDestroy {
       );
   }
 
-  ngOnDestroy() {
-    this.subscription.unsubscribe();
-  }
-
 // aim: passing data to parent component, shopping-list c
 // const bc vars won't change
 // ingredient name = iname (see HTML file)
@@ -55,5 +51,14 @@ export class ShoppingEditComponent implements OnInit, OnDestroy {
     }
     this.editMode = false;
     f.reset
+  }
+
+  onClear() {
+    this.slForm.reset();
+    this.editMode = false;
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 }

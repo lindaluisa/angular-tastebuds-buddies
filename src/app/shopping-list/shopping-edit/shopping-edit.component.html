@@ -33,8 +33,8 @@
 <!-- bc of using @ViewChild, not necessary to pass arguments -->
 <!-- debug: preventing page reload; changing type='submit' to button  -->
          <button class="btn btn-warning" type="submit" [disabled]="!f.valid">{{editMode ? 'Update' : 'Add'}}</button>
-         <button class="btn btn-danger" type="button">Delete</button>
-         <button class="btn btn-warning" type="button">Clear</button>
+         <button class="btn btn-danger" type="button" (click)="onDelet()">Delete</button>
+         <button class="btn btn-warning" type="button" (click)="onClear()">Clear</button>
        </div>
      </div>
    </form>
