@@ -60,7 +60,6 @@ export class DishesEditComponent implements OnInit {
       'contrImagePath': new FormControl(dishImagePath),
       'contrDescription': new FormControl(dishDescription),
       'contrIngredients': dishIngreds
-
     });
   }
 
@@ -68,14 +67,14 @@ export class DishesEditComponent implements OnInit {
     console.log(this.dishForm);
   }
 
-  OnAddIngredient() {
-    (<FormArray>this.dishForm.get('contrIngredients')).push(
-      new FormGroup({
-         'name': new FormControl(),
-         'amount': new FormControl()
-      })
-    )
-  }
+  // OnAddIngredient() {
+  //   (<FormArray>this.dishForm.get('contrIngredients')).push(
+  //     new FormGroup({
+  //        'name': new FormControl(),
+  //        'amount': new FormControl()
+  //     })
+  //   )
+  // }
 }
 
 // note: subscribing to params in edit & detail component;
