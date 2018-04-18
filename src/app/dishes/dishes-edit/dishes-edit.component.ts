@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, FormArray } from '@angular/forms';
 
 import { DishService } from '../dish.service';
 
@@ -19,14 +19,14 @@ export class DishesEditComponent implements OnInit {
   constructor(private route: ActivatedRoute,
     private dishService: DishService) { }
 
-// +params to convert it into a number; id refers to route set-up
+// +params to convert to number; id refers to route set-up
+// only not undefined if in edit mode; if null then undefined
   ngOnInit() {
     this.route.params
     .subscribe(
       (params: Params) => {
         this.id = +params['id'];
-        this.editMode = params['id'] !=null; // checking if params has an id property
-        // only not undefined if in edit mode; if null then undefined
+        this.editMode = params['id'] !=null; // checking if params has id property
         console.log(this.editMode); // true
         this.initForm();
       }
@@ -37,16 +37,30 @@ export class DishesEditComponent implements OnInit {
     let dishName = '';
     let dishImagePath = '';
     let dishDescription = '';
+    let dishIngreds = new FormArray([]);
+
     if (this.editMode) {
       const dish = this.dishService.getDish(this.id);
       dishName = dish.name;
       dishImagePath = dish.imagePath;
       dishDescription = dish.description;
+      if (dish['ingreds']) { 
+        for (let ingredient of dish.ingreds) {
+          dishIngreds.push(
+            new FormGroup({
+              'name' : new FormControl(ingredient.name),
+              'amount' : new FormControl(ingredient.amount)
+            })
+          )
+        }
+      }
     }
     this.dishForm = new FormGroup({
       'contrName': new FormControl(dishName),
       'contrImagePath': new FormControl(dishImagePath),
-      'contrDescription': new FormControl(dishDescription)
+      'contrDescription': new FormControl(dishDescription),
+      'contrIngredients': dishIngreds
+
     });
   }
 
