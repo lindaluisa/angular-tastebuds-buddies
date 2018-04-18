@@ -67,6 +67,15 @@ export class DishesEditComponent implements OnInit {
   onSubmit() {
     console.log(this.dishForm);
   }
+
+  OnAddIngredient() {
+    (<FormArray>this.dishForm.get('contrIngredients')).push(
+      new FormGroup({
+         'name': new FormControl(),
+         'amount': new FormControl()
+      })
+    )
+  }
 }
 
 // note: subscribing to params in edit & detail component;
