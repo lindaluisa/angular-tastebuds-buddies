@@ -41,5 +41,6 @@ export class DishesDetailComponent implements OnInit {
 
   onDeleteDish() {
     this.dishService.deleteDish(this.id);
+    this.router.navigate(['/dishes']);
   }
 }
