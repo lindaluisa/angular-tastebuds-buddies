@@ -35,6 +35,9 @@ export class DishesEditComponent implements OnInit {
     );
   }
 
+  onDeleteIngred(index: number) {
+    (<FormArray>this.dishForm.get('ingredients')).removeAt(index);
+  }
   onCancel() {
     this.router.navigate(['../'], {relativeTo: this.route});
   }
