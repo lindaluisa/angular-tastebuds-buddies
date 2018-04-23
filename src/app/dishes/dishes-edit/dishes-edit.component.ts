@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
-import { FormGroup, FormControl, FormArray } from '@angular/forms';
+import { FormGroup, FormControl, FormArray, Validators } from '@angular/forms';
 
 import { DishService } from '../dish.service';
 
@@ -32,49 +32,60 @@ export class DishesEditComponent implements OnInit {
       }
     );
   }
-
+  //  initForm() has to be called whenever the id params changes
+  //  if we are not in edit mode,
+  // seeing the dish that we want to edit;
+  //  because this means we reload the page
   private initForm() {
     let dishName = '';
     let dishImagePath = '';
-    let dishDescription = '';
+    let dishDescription = ''; 
     let dishIngreds = new FormArray([]);
 
     if (this.editMode) {
       const dish = this.dishService.getDish(this.id);
-      dishName = dish.name;
+      dishName = dish.name; // overwriting in case we are in editMode
       dishImagePath = dish.imagePath;
       dishDescription = dish.description;
       if (dish['ingreds']) { 
         for (let ingredient of dish.ingreds) {
           dishIngreds.push(
             new FormGroup({
-              'name' : new FormControl(ingredient.name),
-              'amount' : new FormControl(ingredient.amount)
+              'name' : new FormControl(ingredient.name, Validators.required),
+              'amount' : new FormControl(ingredient.amount, [
+                Validators.pattern(/^[1-9]+[0-9]*$/)
+              ])
             })
-          )
+          );
         }
       }
     }
     this.dishForm = new FormGroup({
-      'contrName': new FormControl(dishName),
-      'contrImagePath': new FormControl(dishImagePath),
-      'contrDescription': new FormControl(dishDescription),
-      'contrIngredients': dishIngreds
+      // this will be either empty string; or
+      //  if we happen to be in edit mode; will have the name of the dish we are editing
+      'name': new FormControl(dishName, Validators.required), 
+      'imagePath': new FormControl(dishImagePath, Validators.required),
+      'description': new FormControl(dishDescription, Validators.required),
+      'ingredients': dishIngreds
     });
   }
 
   onSubmit() {
-    console.log(this.dishForm);
+    const newDish = this.dishForm.value;
+    this.dishService.addDish(newDish); 
   }
 
-  // OnAddIngredient() {
-  //   (<FormArray>this.dishForm.get('contrIngredients')).push(
-  //     new FormGroup({
-  //        'name': new FormControl(),
-  //        'amount': new FormControl()
-  //     })
-  //   )
-  // }
+  OnAddIngredient() {
+    (<FormArray>this.dishForm.get('ingredients')).push(
+      new FormGroup({
+         'name': new FormControl(null, Validators.required),
+         'amount': new FormControl(null, [
+          Validators.required,
+          Validators.pattern(/^[1-9]+[0-9]*$/)
+        ])
+      })
+    )
+  }
 }
 
 // note: subscribing to params in edit & detail component;

@@ -27,7 +27,7 @@ export class DishService {
     new Dish(
       'Calçots with Romesco Sauce',
       'Catalan gastronomic masterpiece',
-      'http://boroughmarket.org.uk/images/2570/default/bmml31_jennychandler0041.jpg',
+      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTi39iLyXJAOUVSjdlvsf9TK0od6_rAZhe5fBzSHbYd4Bs6zrWN',
       [
         new Ingredient('Almonds',32),
         new Ingredient('Olive oil', 1)
@@ -53,4 +53,7 @@ export class DishService {
     this.shoppingListService.addIngreds(ingreds);
    }
 
+   addDish(dish: Dish) {
+    this.dishes.push(dish);
+   }
   }
