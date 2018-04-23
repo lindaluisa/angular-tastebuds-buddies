@@ -3,6 +3,7 @@ import { ActivatedRoute, Params } from '@angular/router';
 import { FormGroup, FormControl, FormArray, Validators } from '@angular/forms';
 
 import { DishService } from '../dish.service';
+import { Dish } from '../dishes.model';
 
 @Component({
   selector: 'app-dishes-edit',
@@ -60,9 +61,9 @@ export class DishesEditComponent implements OnInit {
         }
       }
     }
+    // this will be either empty string; or
+    //  if we happen to be in edit mode; will have the name of the dish we are editing
     this.dishForm = new FormGroup({
-      // this will be either empty string; or
-      //  if we happen to be in edit mode; will have the name of the dish we are editing
       'name': new FormControl(dishName, Validators.required), 
       'imagePath': new FormControl(dishImagePath, Validators.required),
       'description': new FormControl(dishDescription, Validators.required),
@@ -71,8 +72,16 @@ export class DishesEditComponent implements OnInit {
   }
 
   onSubmit() {
-    const newDish = this.dishForm.value;
-    this.dishService.addDish(newDish); 
+    // const newDish = new Dish(
+    //   this.dishForm.value['name'], 
+    //   this.dishForm.value['description'],
+    //   this.dishForm.value['imagePath'],
+    //   this.dishForm.value['ingredients']);
+    if (this.editMode) { 
+      this.dishService.updateDish(this.id, this.dishForm.value);
+    } else {
+      this.dishService.addDish(this.dishForm.value);
+    }
   }
 
   OnAddIngredient() {
@@ -87,7 +96,6 @@ export class DishesEditComponent implements OnInit {
     )
   }
 }
-
 // note: subscribing to params in edit & detail component;
 // no need for cleaning up subscription bc its inherintly from Angular
 // however, when using customized observables, unsubscription is required 
