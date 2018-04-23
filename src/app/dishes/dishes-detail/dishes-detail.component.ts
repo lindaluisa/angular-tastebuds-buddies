@@ -38,4 +38,8 @@ export class DishesDetailComponent implements OnInit {
     this.router.navigate(['edit'], {relativeTo: this.route});
     // alternative: this.router.navigate(['../', this.id, 'edit', {relativeTo: this.route}]);
   }
+
+  onDeleteDish() {
+    this.dishService.deleteDish(this.id);
+  }
 }

@@ -22,6 +22,12 @@ dishes: Dish[];
               private route: ActivatedRoute) {}
 
   ngOnInit() { 
+    this.dishService.dishesChanged
+    .subscribe(
+      (arrDish: Dish[]) => {
+        this.dishes = arrDish;
+      }
+    );
     this.dishes = this.dishService.getDishes();
   }
 

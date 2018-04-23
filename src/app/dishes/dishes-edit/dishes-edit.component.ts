@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { FormGroup, FormControl, FormArray, Validators } from '@angular/forms';
 
 import { DishService } from '../dish.service';
@@ -18,7 +18,8 @@ export class DishesEditComponent implements OnInit {
   dishForm: FormGroup;
 
   constructor(private route: ActivatedRoute,
-    private dishService: DishService) { }
+              private dishService: DishService,
+              private router: Router) { }
 
 // +params to convert to number; id refers to route set-up
 // only not undefined if in edit mode; if null then undefined
@@ -32,6 +33,10 @@ export class DishesEditComponent implements OnInit {
         this.initForm();
       }
     );
+  }
+
+  onCancel() {
+    this.router.navigate(['../'], {relativeTo: this.route});
   }
   //  initForm() has to be called whenever the id params changes
   //  if we are not in edit mode,
@@ -72,16 +77,17 @@ export class DishesEditComponent implements OnInit {
   }
 
   onSubmit() {
-    // const newDish = new Dish(
-    //   this.dishForm.value['name'], 
-    //   this.dishForm.value['description'],
-    //   this.dishForm.value['imagePath'],
-    //   this.dishForm.value['ingredients']);
+    const newDish = new Dish(
+      this.dishForm.value['name'],
+      this.dishForm.value['description'],
+      this.dishForm.value['imagePath'],
+      this.dishForm.value['ingredients']);
     if (this.editMode) { 
-      this.dishService.updateDish(this.id, this.dishForm.value);
+      this.dishService.updateDish(this.id, newDish);
     } else {
-      this.dishService.addDish(this.dishForm.value);
+      this.dishService.addDish(newDish);
     }
+    this.onCancel();
   }
 
   OnAddIngredient() {
@@ -96,6 +102,10 @@ export class DishesEditComponent implements OnInit {
     )
   }
 }
+
+
+
 // note: subscribing to params in edit & detail component;
 // no need for cleaning up subscription bc its inherintly from Angular
 // however, when using customized observables, unsubscription is required 
+

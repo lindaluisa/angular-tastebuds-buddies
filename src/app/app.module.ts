@@ -17,6 +17,7 @@ import { ShoppingListService } from './shopping-list/shopping-list.service';
 import { AppRoutingModule } from './app-routing.module';
 import { DishStartComponent } from './dishes/dish-start/dish-start.component';
 import { DishesEditComponent } from './dishes/dishes-edit/dishes-edit.component';
+import { DishService } from './dishes/dish.service';
 
 
 @NgModule({
@@ -40,7 +41,7 @@ import { DishesEditComponent } from './dishes/dishes-edit/dishes-edit.component'
     ReactiveFormsModule,
     AppRoutingModule
   ],
-  providers: [ShoppingListService],
+  providers: [ShoppingListService, DishService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
