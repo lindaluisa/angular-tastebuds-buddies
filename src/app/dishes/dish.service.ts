@@ -39,6 +39,10 @@ export class DishService {
   constructor(private shoppingListService: ShoppingListService) {
   }
 
+  setDishes(dishes: Dish[]) {
+    this.dishes = dishes;
+    this.dishesChanged.next(this.dishes.slice());
+  }
 // return a new array; exact copy of the exact service file 
 // we cannot access the dishes array stored from outside, we only get a copy
 // way to get dishes
