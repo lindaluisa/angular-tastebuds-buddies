@@ -12,7 +12,7 @@ export class DishService {
     new Dish(
       'Rice Rolls with Satay Sauce', 
       'Super yummy summer dish',
-      'http://laurencariscooks.com/1_lcc/wp-content/uploads/2017/05/Vegan-Tofu-Summer-Rolls-with-Two-kinds-of-dipping-sauce-1-2-600x600.jpg',
+      'https://laurencariscooks.com/1_lcc/wp-content/uploads/2017/05/Vegan-Tofu-Summer-Rolls-with-Two-kinds-of-dipping-sauce-1-2-600x600.jpg',
       [
         new Ingredient('Rice Paper',10),
         new Ingredient('Vermicelli Noodles',2),
